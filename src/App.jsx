@@ -12,6 +12,8 @@ function App() {
     duration: 10,
   });
 
+  const inputIsValid = userInput.duration >= 1;
+
   const resultData = calculateInvestmentResults(userInput);
 
   function handleChange(inputIdentifier, newValue) {
@@ -27,7 +29,12 @@ function App() {
     <>
       <Header />
       <UserInput onChangeInput={handleChange} userInput={userInput} />
-      <Results userInput={userInput} annualData={resultData} />
+      {!inputIsValid && (
+        <p className="center">yeah. {userInput.duration} years?</p>
+      )}
+      {inputIsValid && (
+        <Results userInput={userInput} annualData={resultData} />
+      )}
     </>
   );
 }

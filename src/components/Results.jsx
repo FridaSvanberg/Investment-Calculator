@@ -1,7 +1,9 @@
 import { calculateInvestmentResults, formatter } from '../util/investment';
 export default function Results({ annualData }) {
   const initialInvestment =
-    annualData[0].valueEndOfYear - annualData[0].annualInvestment;
+    annualData[0].valueEndOfYear -
+    annualData[0].interest -
+    annualData[0].annualInvestment;
   return (
     <table id="result">
       <thead>
